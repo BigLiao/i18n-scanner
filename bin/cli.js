@@ -87,8 +87,12 @@ function handlerAction(options) {
     }
 
     inquirer.prompt(prompts).then(answers => {
-      config.input = answers.inputDir;
-      config.output = answers.outputDir;
+      if (answers.inputDir) {
+        config.input = answers.inputDir;
+      }
+      if (answers.outputDir) {
+        config.output = answers.outputDir;
+      }
       scan(config.input, config.output);
     })
   });
