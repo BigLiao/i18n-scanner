@@ -1,7 +1,9 @@
 #!/usr/bin/env node
+const fs = require('fs');
 const package = require('../package.json');
 const program = require('commander');
 const inquirer = require('inquirer');
+const scan = require('../lib/index');
 
 program
   .version(package.version)
@@ -24,13 +26,13 @@ function handlerAction(options) {
   inquirer.prompt({
     type: 'list',
     name: 'haveSavedCode',
-    message: 'This command will change your source code, make sure you have commit your code!\n  此命令会改变你的源代码，请确保在操作前保存并提交你的代码！',
+    message: 'This command will change your source code, make sure you have committed\n  此命令会改变你的源代码，操作前先保提交代码！',
     choices: [
       {
-        name: 'Ok, I have commit my code.\n 没问题，我已经提交过代码了。',
+        name: 'Ok, I have commit my code. (没问题，我已经提交过代码了)',
         value: true
       }, {
-        name: 'Not yet, I will commit first.\n 我还没提交代码！',
+        name: 'Cancel operation. (取消操作)',
         value: false
       }
     ]
@@ -42,13 +44,19 @@ function handlerAction(options) {
     if (!config.input) {
       prompts.push({
         type: 'input',
-        name: 'input',
-        message: 'path of source code: ',
+        name: 'inputDir',
+        message: 'Source code directory (源代码目录): ',
+        default: './src',
         validate: function (input) {
           if (!input) {
-            return 'can not be empty';
+            return 'Can not be empty!';
           }
-          return true;
+          try {
+            fs.accessSync(input);
+            return true;         
+          } catch (error) {
+            return 'Directory does not exist';
+          }
         }
       });
     }
@@ -56,52 +64,33 @@ function handlerAction(options) {
     if (!config.output) {
       prompts.push({
         type: 'input',
-        name: 'output',
-        message: 'path for place i18n data: ',
+        name: 'outputDir',
+        default: './locale/lang',
+        message: 'Target directory to place i18n files (放置 i18n 文件的目录): ',
         validate: function (input) {
           if (!input) {
-            return 'can not be empty';
+            return 'Can not be empty!';
           }
-          return true;
+          try {
+            fs.accessSync(input);
+            return true;     
+          } catch {
+            try {
+              fs.mkdirSync(input, { recursive: true });
+              return true;
+            } catch {
+              return 'mkdir failed';
+            }
+          }
         }
       });
     }
 
     inquirer.prompt(prompts).then(answers => {
-      
+      config.input = answers.inputDir;
+      config.output = answers.outputDir;
+      scan(config.input, config.output);
     })
   });
   
-
-  
-  
-  // promps.push({
-  //   type: 'input',
-  //   name: 'input',
-  //   message: 'input the path of source code',
-  //   validate: function (input) {
-  //     if (!input) {
-  //       return 'can not be empty';
-  //     }
-  //     return true;
-  //   }
-  // });
-  // promps.push({
-  //   type: 'list',
-  //   name: 'cssPretreatment',
-  //   message: '想用什么css预处理器呢',
-  //   choices: [
-  //     {
-  //       name: 'Sass/Compass',
-  //       value: 'sass'
-  //     },
-  //     {
-  //       name: 'Less',
-  //       value: 'less'
-  //     }
-  //   ]
-  // })
-  // inquirer.prompt(promps).then(function (answers) {
-  //   console.log(answers)
-  // });
 }
