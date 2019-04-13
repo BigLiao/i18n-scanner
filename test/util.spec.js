@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const util = require('./util');
+const util = require('../lib/util');
 
 describe('util 工具测试', () => {
   describe('readDir 读取目录', () => {

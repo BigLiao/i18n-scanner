@@ -4,7 +4,7 @@
   "description": "Automatic generate i18n locale files by scan your code.",
   "main": "./lib/index.js",
   "bin": {
-    "i18next-scanner": "./bin/cli.js"
+    "iscan": "./bin/cli.js"
   },
   "scripts": {
     "test": "mocha"
@@ -16,7 +16,8 @@
   "author": "bigLiao",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.19.0"
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
