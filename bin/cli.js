@@ -7,10 +7,9 @@ const scan = require('../lib/index');
 
 program
   .version(package.version)
-  .usage('-i <input dir> -o <output dir>')
+  .usage('-i <source dir> -o <i18n dir>')
   .option('-i --input [input]', 'path of source code')
   .option('-o --output [output]', 'path for place i18n data')
-  .option('-l --lang [lang]', 'default language')
   .action(options => {
     handlerAction(options)
   })

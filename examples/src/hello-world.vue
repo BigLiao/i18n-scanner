@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div>{{$t('_1d7a9637ea75')}}</div>
-    <div>{{$t('_34f9a492f3b0')}}</div>
+    <div>{{$t('你好世界')}}</div>
+    <div>{{$t('Hello world')}}</div>
   </div>
 </template>
 
@@ -10,12 +10,12 @@ export default {
   name: 'hello world',
   data() {
     return {
-      message: this.$t('_780a507a88a4')
+      message: this.$t('自动扫描代码')
     };
   },
   methods: {
     init() {
-      return this.$t('_cb0f822169a3');
+      return this.$t('并提取 i18n 文件');
     }
   }
 }

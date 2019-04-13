@@ -1,7 +1,7 @@
 {
   "name": "i18n-scanner",
-  "version": "0.0.1",
-  "description": "Automaticly generate i18n locale files by scan your code.",
+  "version": "0.1.0",
+  "description": "Automaticly extract i18n locale files by scan your code.",
   "main": "./lib/index.js",
   "bin": {
     "i18n-scanner": "./bin/cli.js"
@@ -11,7 +11,8 @@
   },
   "keywords": [
     "i18n",
-    "scanner"
+    "scanner",
+    "extract"
   ],
   "author": "BigLiao",
   "license": "MIT",
