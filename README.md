@@ -46,7 +46,7 @@ npm install -g i18n-scanner
 Matching code like `$t('login')`, so the text need to be extracted must wrote in this format.<br>
 匹配字符串的标识为 `$t('登录')` ，所以需要翻译的内容需要用这种格式。
 
-Texts started with a dash will not be matched, like `$t('_login')`.<br>
+Texts starting with a dash will not be matched, like `$t('_login')`.<br>
 以下划线 `_` 开头的字符不会被匹配，例如 `$t('_登录')`。
 
 ### CLI Usage
