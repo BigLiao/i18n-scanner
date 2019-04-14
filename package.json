@@ -2,12 +2,17 @@
   "name": "i18n-scanner",
   "version": "0.1.0",
   "description": "Automaticly extract i18n locale files by scan your code.",
+  "homepage": "https://github.com/BigLiao/i18n-scanner",
   "main": "./lib/index.js",
   "bin": {
     "i18n-scanner": "./bin/cli.js"
   },
   "scripts": {
     "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:BigLiao/i18n-scanner.git"
   },
   "keywords": [
     "i18n",
