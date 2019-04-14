@@ -32,13 +32,13 @@ Extracted i18n file
 ## Installation
 
 ```sh
-npm install --save-dev i18next-scanner
+npm install --save-dev i18n-scanner
 ```
 
 or
 
 ```sh
-npm install -g i18next-scanner
+npm install -g i18n-scanner
 ```
 
 ## Usage
