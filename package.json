@@ -1,6 +1,6 @@
 {
   "name": "i18n-scanner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Automaticly extract i18n locale files by scan your code.",
   "homepage": "https://github.com/BigLiao/i18n-scanner",
   "main": "./lib/index.js",
